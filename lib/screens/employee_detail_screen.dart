@@ -27,18 +27,21 @@ class EmployeeDetailScreen extends StatelessWidget {
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.headlineSmall,
           ),
-          Text(
-            employee.position,
-            textAlign: TextAlign.center,
-          ),
+          Text(employee.position, textAlign: TextAlign.center),
           const Divider(height: 32),
           _InfoTile(label: 'Staff ID', value: employee.id),
           _InfoTile(label: 'Department', value: employee.department),
           _InfoTile(label: 'Email', value: employee.email),
-          _InfoTile(label: 'Phone', value: employee.email),
+          _InfoTile(label: 'Phone', value: employee.phone ?? 'N/A'),
           _InfoTile(label: 'Manager', value: employee.managerName),
-          _InfoTile(label: 'Leave Balance', value: '${employee.leaveBalance} days'),
-          _InfoTile(label: 'Status', value: employee.isActive ? 'Active' : 'Inactive'),
+          _InfoTile(
+            label: 'Leave Balance',
+            value: '${employee.leaveBalance} days',
+          ),
+          _InfoTile(
+            label: 'Status',
+            value: employee.isActive ? 'Active' : 'Inactive',
+          ),
         ],
       ),
     );
@@ -54,10 +57,7 @@ class _InfoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: ListTile(
-        title: Text(label),
-        subtitle: Text(value),
-      ),
+      child: ListTile(title: Text(label), subtitle: Text(value)),
     );
   }
 }

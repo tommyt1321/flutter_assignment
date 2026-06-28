@@ -4,7 +4,7 @@ class Employee {
   final String department;
   final String position;
   final String email;
-  final String phone;
+  final String? phone;
   final int leaveBalance;
   final String managerName;
   final bool isActive;
@@ -24,12 +24,13 @@ class Employee {
   factory Employee.fromJson(Map<String, dynamic> json) {
     return Employee(
       id: json['id'] as String,
-      fullName: json['name'] as String,
+      fullName: json['fullName'] as String, // Fixed key from 'name'
       department: json['department'] as String,
       position: json['position'] as String,
       email: json['email'] as String,
-      phone: json['phone'] as String,
-      leaveBalance: json['leave_balance'] as int,
+      phone: json['phone'] as String?, // Added '?' to make it nullable
+      leaveBalance:
+          json['leaveBalance'] as int, // Fixed key from 'leave_balance'
       managerName: json['managerName'] as String,
       isActive: json['isActive'] as bool,
     );

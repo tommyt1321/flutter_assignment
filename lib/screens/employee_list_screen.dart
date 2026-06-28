@@ -34,12 +34,15 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                 border: OutlineInputBorder(),
               ),
               onChanged: (value) {
-                _query = value;
+                setState(() {
+                  _query = value;
+                });
               },
             ),
           ),
-          ListView.builder(
-            itemCount: employees.length,
+          Expanded(
+            child: ListView.builder(
+              itemCount: employees.length,
               itemBuilder: (context, index) {
                 final employee = employees[index];
                 return EmployeeCard(
@@ -54,6 +57,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                 );
               },
             ),
+          ),
         ],
       ),
     );
