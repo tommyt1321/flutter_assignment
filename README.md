@@ -1,17 +1,25 @@
-# flutter_assignment
+# HRConnect Broken App - Student Starter Code
 
-A new Flutter project.
+This Flutter project is intentionally broken for your group debugging assignment.
 
-## Getting Started
+## Your Task
 
-This project is a starting point for a Flutter application.
+1. Run the project.
+2. Identify bugs and errors.
+3. Fix the code without rebuilding the app from scratch.
+4. Record your fixes in a debugging log table.
+5. Prepare at least 10 test cases with expected and actual results.
 
-A few resources to get you started if this is your first Flutter project:
+## Suggested Accounts
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+HR user:
+- Email: `hr@company.com`
+- Password: `hr123`
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Employee user:
+- Email: `employee@company.com`
+- Password: `emp123`
+
+## Important
+
+Do not delete features just to avoid fixing them. You must repair the intended HRConnect app.
