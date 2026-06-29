@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final email = _emailController.text.trim();
     final password = _passwordController.text;
 
-    if (email.isEmpty && password.isEmpty) {
+    if (email.isEmpty || password.isEmpty) {
       setState(() {
         _errorMessage = 'Email and password are required.';
       });
@@ -41,10 +41,14 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
 
+    setState(() {
+      _errorMessage = null;
+    });
+
     Navigator.pushReplacementNamed(
       context,
       '/dashboard',
-      arguments: user.email,
+      arguments: user,
     );
   }
 
@@ -101,8 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 12),
                     const Text(
-                      'Try HR: hr@company.com / hr123
-Try Employee: employee@company.com / emp123',
+                      'Try HR: hr@company.com / hr123\nTry Employee: employee@company.com / emp123',
                       textAlign: TextAlign.center,
                     ),
                   ],

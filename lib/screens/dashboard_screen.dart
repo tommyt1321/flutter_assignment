@@ -43,14 +43,16 @@ class DashboardScreen extends StatelessWidget {
             value: '0',
           ),
           const SizedBox(height: 16),
-          FilledButton.icon(
-            onPressed: () {
-              Navigator.pushNamed(context, '/employees', arguments: user);
-            },
-            icon: const Icon(Icons.people),
-            label: const Text('Open Employee Directory'),
-          ),
-          const SizedBox(height: 8),
+          if (user.isHr) ...[
+            FilledButton.icon(
+              onPressed: () {
+                Navigator.pushNamed(context, '/employees', arguments: user);
+              },
+              icon: const Icon(Icons.people),
+              label: const Text('Open Employee Directory'),
+            ),
+            const SizedBox(height: 8),
+          ],
           FilledButton.icon(
             onPressed: () {
               Navigator.pushNamed(context, '/leave', arguments: user);
