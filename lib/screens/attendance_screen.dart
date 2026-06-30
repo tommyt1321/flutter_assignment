@@ -35,8 +35,7 @@ class AttendanceScreen extends StatelessWidget {
                     ),
                     title: Text(employee?.fullName ?? record.employeeId),
                     subtitle: Text(
-                      '${record.date.year}-${record.date.month.toString().padLeft(2, '0')}-${record.date.day.toString().padLeft(2, '0')}
-'
+                      '${record.date.year}-${record.date.month.toString().padLeft(2, '0')}-${record.date.day.toString().padLeft(2, '0')}'
                       'In: ${record.checkIn} | Out: ${record.checkOut}',
                     ),
                     trailing: Text(record.status),

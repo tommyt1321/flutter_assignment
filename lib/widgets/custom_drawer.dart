@@ -37,7 +37,7 @@ class CustomDrawer extends StatelessWidget {
               title: const Text('Employees'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pushNamed(context, '/employee', arguments: user);
+                Navigator.pushNamed(context, '/employees', arguments: user);
               },
             ),
           ListTile(

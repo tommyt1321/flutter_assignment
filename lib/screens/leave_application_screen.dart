@@ -51,7 +51,7 @@ class _LeaveApplicationScreenState extends State<LeaveApplicationScreen> {
       lastDate: DateTime(2026, 12, 31),
     );
     if (picked != null) {
-      setState(() => _startDate = picked);
+      setState(() => _endDate = picked);
     }
   }
 
