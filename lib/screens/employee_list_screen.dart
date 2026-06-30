@@ -50,8 +50,8 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                   onTap: () {
                     Navigator.pushNamed(
                       context,
-                      '/employee-details',
-                      arguments: employee,
+                      '/employee-details', //changed employeeDetail to employee-details
+                      arguments: employee, //changed employee.id to employee 
                     );
                   },
                 );
