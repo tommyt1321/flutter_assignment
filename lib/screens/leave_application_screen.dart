@@ -18,7 +18,7 @@ class LeaveApplicationScreen extends StatefulWidget {
 class _LeaveApplicationScreenState extends State<LeaveApplicationScreen> {
   final _formKey = GlobalKey<FormState>();
   final _reasonController = TextEditingController();
-  final _employeeService = const EmployeeService();
+  final EmployeeService _employeeService = EmployeeService();
   final _leaveService = LeaveService();
 
   String? _selectedLeaveType;

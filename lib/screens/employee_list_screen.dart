@@ -14,7 +14,7 @@ class EmployeeListScreen extends StatefulWidget {
 }
 
 class _EmployeeListScreenState extends State<EmployeeListScreen> {
-  final _service = const EmployeeService();
+  final _service = EmployeeService();
   String _query = '';
 
   @override

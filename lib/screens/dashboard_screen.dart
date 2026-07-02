@@ -11,9 +11,10 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final employeeService = const EmployeeService();
+    final employeeService = EmployeeService();
     final employees = employeeService.getEmployees();
-    final activeEmployees = employees.where((employee) => employee.isActive).length;
+    final activeEmployees =
+        employees.where((e) => e.isActive).length;
 
     return Scaffold(
       appBar: AppBar(title: const Text('HR Dashboard')),
@@ -27,43 +28,63 @@ class DashboardScreen extends StatelessWidget {
           ),
           Text('Role: ${user.role}'),
           const SizedBox(height: 16),
+
           _DashboardCard(
             icon: Icons.people,
             title: 'Total Employees',
             value: employees.length.toString(),
           ),
+
           _DashboardCard(
             icon: Icons.verified_user,
             title: 'Active Employees',
             value: activeEmployees.toString(),
           ),
+
           _DashboardCard(
             icon: Icons.pending_actions,
             title: 'Pending Leave Requests',
             value: '0',
           ),
+
           const SizedBox(height: 16),
+
           if (user.isHr) ...[
             FilledButton.icon(
               onPressed: () {
-                Navigator.pushNamed(context, '/employees', arguments: user);
+                Navigator.pushNamed(
+                  context,
+                  '/employees',
+                  arguments: user,
+                );
               },
               icon: const Icon(Icons.people),
               label: const Text('Open Employee Directory'),
             ),
             const SizedBox(height: 8),
           ],
+
           FilledButton.icon(
             onPressed: () {
-              Navigator.pushNamed(context, '/leave', arguments: user);
+              Navigator.pushNamed(
+                context,
+                '/leave',
+                arguments: user,
+              );
             },
             icon: const Icon(Icons.beach_access),
             label: const Text('Apply Leave'),
           ),
+
           const SizedBox(height: 8),
+
           FilledButton.icon(
             onPressed: () {
-              Navigator.pushNamed(context, '/attendance', arguments: user);
+              Navigator.pushNamed(
+                context,
+                '/attendance',
+                arguments: user,
+              );
             },
             icon: const Icon(Icons.access_time),
             label: const Text('View Attendance'),
@@ -80,6 +101,7 @@ class _DashboardCard extends StatelessWidget {
   final String value;
 
   const _DashboardCard({
+    super.key,
     required this.icon,
     required this.title,
     required this.value,

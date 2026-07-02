@@ -12,11 +12,12 @@ class AttendanceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final employeeService = const EmployeeService();
+    final employeeService = EmployeeService();
     final records = mockAttendance.map(Attendance.fromJson).where((record) {
       if (user.isHr) return true;
       return record.employeeId == user.id;
-    }).toList();
+    }).toList()
+  ..sort((a, b) => b.date.compareTo(a.date));
 
     return Scaffold(
       appBar: AppBar(title: const Text('Attendance')),
@@ -31,14 +32,28 @@ class AttendanceScreen extends StatelessWidget {
                 return Card(
                   child: ListTile(
                     leading: Icon(
-                      record.isLate ? Icons.warning_amber : Icons.check_circle,
-                    ),
+  record.isAbsent
+      ? Icons.cancel
+      : record.isLate
+          ? Icons.warning_amber
+          : Icons.check_circle,
+),
                     title: Text(employee?.fullName ?? record.employeeId),
                     subtitle: Text(
-                      '${record.date.year}-${record.date.month.toString().padLeft(2, '0')}-${record.date.day.toString().padLeft(2, '0')}'
-                      'In: ${record.checkIn} | Out: ${record.checkOut}',
-                    ),
-                    trailing: Text(record.status),
+  '${record.date.year}-${record.date.month.toString().padLeft(2, '0')}-${record.date.day.toString().padLeft(2, '0')}\n'
+  'In: ${record.checkIn} | Out: ${record.checkOut}',
+),
+                    trailing: Text(
+  record.status,
+  style: TextStyle(
+    color: record.isAbsent
+        ? Colors.red
+        : record.isLate
+            ? Colors.orange
+            : Colors.green,
+    fontWeight: FontWeight.bold,
+  ),
+),
                   ),
                 );
               },
